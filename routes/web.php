@@ -16,20 +16,28 @@ Route::get('/', function () {
 
 
 */
+
 route::view('login','/login')->name('login');
 Route::get('/login', function () {
     return view('login');
 });
 
+
 Route::get('/carreras', function () {
     return view('carreras');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 Route::get('/alumnos', function () {
     return view('alumnos');
 });
+
+Route::get('/carreras', 'CarrerasController@index')->name('carreras.index');
+
+
+
+
 
 Route::resource('alumnos',App\Http\Controllers\AlumnosController::class)->middleware('auth');
 

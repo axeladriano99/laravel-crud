@@ -23,6 +23,10 @@
             <a class="nav-link" href="/login">login</a>
         </li>
         <li class="nav-item">
+            
+            <a class="nav-link" href="/login">agregar Carrera</a>
+        </li>
+        <li class="nav-item">
 
                 <a class="nav-link" href="/carreras">Carreras</a>
             </li>

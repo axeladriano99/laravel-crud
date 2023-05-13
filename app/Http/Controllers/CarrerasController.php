@@ -9,22 +9,19 @@ class CarrerasController extends Controller
 
 {
     
-    public function index()
+
+    public function index(Request $request)
     {
-        $carreras=Carreras::all();
-        return view('carreras',compact('carreras'));
+        $cantidad = $request->input('cantidad', 1); // Obtener la cantidad de carreras que el usuario desea ver (5 por defecto)
+        $usuarios = Carreras::orderBy('id')->limit($cantidad)->get();
+         // Obtener las carreras ordenadas por ID y limitar la cantidad
+        return view('carreras', compact('usuarios', 'cantidad'));
     }
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $carrera = new Carreras($request->input());
@@ -40,6 +37,7 @@ class CarrerasController extends Controller
      */
     public function show($id)
     {
+        $carreras = Carreras::all();
         $carrera=Carreras::find($id);
         return view('editCarrera',compact('carrera'));
 
@@ -82,4 +80,6 @@ class CarrerasController extends Controller
         $carrera->delete();
         return redirect('carreras');
     }
+
+
 }

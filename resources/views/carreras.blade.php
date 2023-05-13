@@ -1,5 +1,7 @@
 @extends('plantilla')
 @section('contenido')
+<div class="container">
+    <h1>Carreras</h1>
 <div class="row mt-3">
     <div class="col-md-4 offset-md-4">
         <div class="d-grid mx-auto">
@@ -15,8 +17,13 @@
             <table class="table table-bordered table-hover">
                 <thead><tr><th>#</th><th>CARRERA</th><th>EDITAR</th><th>ELIMINAR</th></tr></thead>
                 <tbody class="table-group-divider">
+                    <form method="get" action="{{ route('carreras.index') }}">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" value="{{ $cantidad }}" min="1" >
+                        <button type="submit">Ver</button>
+                    </form>
                     @php $i=1; @endphp
-                    @foreach($carreras as $row)
+                    @foreach($usuarios as $row)
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $row->carrera }}</td>
@@ -63,3 +70,5 @@
     </div>
 </div>
 @endsection
+
+

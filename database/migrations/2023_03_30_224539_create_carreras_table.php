@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        
         Schema::create('carreras', function (Blueprint $table) {
             $table->id();
             $table->string('carrera',50);
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
